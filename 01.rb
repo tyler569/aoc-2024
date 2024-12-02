@@ -9,17 +9,6 @@ class AOC202401
     parse!
   end
 
-  def parse!
-    @list1 = []
-    @list2 = []
-
-    @input.split("\n").each do |line|
-      n1, n2 = line.split(" ")
-      @list1 << n1.to_i
-      @list2 << n2.to_i
-    end
-  end
-
   def part1
     @list1.sort!
     @list2.sort!
@@ -42,6 +31,19 @@ class AOC202401
     end
 
     score
+  end
+
+  private
+
+  def parse!
+    @list1 = []
+    @list2 = []
+
+    @input.split("\n").each do |line|
+      n1, n2 = line.split(" ")
+      @list1 << n1.to_i
+      @list2 << n2.to_i
+    end
   end
 end
 
