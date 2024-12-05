@@ -40,8 +40,8 @@ end
 def main
   input = AOCInputFetcher.get_input(2024, 3)
   day = AOC202403.new(input)
-  puts "Day 2 Part 1: #{day.part1}"
-  puts "Day 2 Part 2: #{day.part2}"
+  puts "Day 3 Part 1: #{day.part1}"
+  puts "Day 3 Part 2: #{day.part2}"
 end
 
 main if __FILE__ == $PROGRAM_NAME
