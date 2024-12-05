@@ -12,30 +12,55 @@ class AOC202405
     total = 0
 
     @updates.each do |update|
-      catch :nope do
-        combs = update.combination(2)
-        combs.each do |comb|
-          throw :nope if @rules.include?(comb.reverse)
-        end
-        total += middle_item(update).to_i
-      end
+      next if update != update.sort
+      total += middle_item(update).to_i
     end
 
     total
   end
 
   def part2
+    total = 0
+
+    @updates.each do |update|
+      next if update == update.sort
+      total += middle_item(update.sort).to_i
+    end
+
+    total
+  end
+
+  class AOCSortable
+    include Comparable
+
+    def initialize(value, ordering)
+      @value = value
+      @ordering = ordering
+    end
+
+    def <=>(other)
+      @ordering.include?("#{@value}|#{other.value}") ? -1 : 1
+    end
+
+    def value
+      @value
+    end
+
+    def to_i
+      @value.to_i
+    end
+
+    def to_s
+      @value
+    end
   end
 
   def parse!
     rules, updates = @input.split("\n\n")
-
-    @rules = rules.split("\n").map do |rule|
-      rule.split("|")
-    end
+    rules = rules.split("\n")
 
     @updates = updates.split("\n").map do |update|
-      update.split(",")
+      update.split(",").map { |i| AOCSortable.new(i, rules) }
     end
   end
 

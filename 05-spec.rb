@@ -34,28 +34,27 @@ describe 'AOC 2024 day 5' do
     97,13,75,29,47
   EOD
 
-  before(:all) do
-    @sample = AOC202405.new(SAMPLE_DATA_5)
-    # @day = AOC202405.new(AOCInputFetcher.get_input(2024, 5))
-  end
-
   describe 'part 1' do
     it 'should return 143 for the example' do
+      @sample = AOC202405.new(SAMPLE_DATA_5)
       expect(@sample.part1).to eq(143)
     end
 
-    # it 'should return 279 for the input' do
-    #   expect(@day.part1).to eq(2654)
-    # end
+    it 'should return 6034 for the input' do
+      @day = AOC202405.new(AOCInputFetcher.get_input(2024, 5))
+      expect(@day.part1).to eq(6034)
+    end
   end
 
   describe 'part 2' do
-    # it 'should return 9 for the example' do
-    #   expect(@sample.part2).to eq(9)
-    # end
+    it 'should return 123 for the example' do
+      @sample = AOC202405.new(SAMPLE_DATA_5)
+      expect(@sample.part2).to eq(123)
+    end
 
-    # it 'should return 1990 for the input' do
-    #   expect(@day.part2).to eq(1990)
-    # end
+    it 'should return 6305 for the input' do
+      @day = AOC202405.new(AOCInputFetcher.get_input(2024, 5))
+      expect(@day.part2).to eq(6305)
+    end
   end
 end
