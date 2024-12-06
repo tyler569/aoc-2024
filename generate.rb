@@ -46,7 +46,7 @@ SPEC_TEMPLATE = <<~ERB
 
     before(:all) do
       @sample = AOC2024<%= "%02d" % day %>.new(SAMPLE_DATA_<%= day %>)
-      @day = AOC2024<%= "%02d" % day %>.new(AOCInputFetcher.get_input(2024, <%= day %>))
+      # @day = AOC2024<%= "%02d" % day %>.new(AOCInputFetcher.get_input(2024, <%= day %>))
     end
 
     describe 'part 1' do
@@ -54,7 +54,7 @@ SPEC_TEMPLATE = <<~ERB
       #   expect(@sample.part1).to eq(18)
       # end
 
-      # it 'should return 279 for the input' do
+      # it 'should return 2654 for the input' do
       #   expect(@day.part1).to eq(2654)
       # end
     end
