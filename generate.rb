@@ -8,7 +8,7 @@ MAIN_TEMPLATE = <<~ERB
 
   require './get_input'
 
-  class AOC2024<%= "%02d" % day %>
+  class AOC2024<%= day_str %>
     def initialize(input)
       @input = input
       parse!
@@ -26,7 +26,7 @@ MAIN_TEMPLATE = <<~ERB
 
   def main
     input = AOCInputFetcher.get_input(2024, <%= day %>)
-    day = AOC2024<%= "%02d" % day %>.new(input)
+    day = AOC2024<%= day_str %>.new(input)
     puts "Day <%= day %> Part 1: \#{day.part1}"
     puts "Day <%= day %> Part 2: \#{day.part2}"
   end
@@ -38,34 +38,35 @@ ERB
 SPEC_TEMPLATE = <<~ERB
   #!/usr/bin/env ruby
 
-  require './<%= "%02d" % day %>'
+  require 'rspec'
+  require './spec_helper'
+  require './<%= day_str %>'
 
   describe 'AOC 2024 day <%= day %>' do
     SAMPLE_DATA_<%= day %> = <<~EOD
     EOD
 
-    before(:all) do
-      @sample = AOC2024<%= "%02d" % day %>.new(SAMPLE_DATA_<%= day %>)
-      # @day = AOC2024<%= "%02d" % day %>.new(AOCInputFetcher.get_input(2024, <%= day %>))
-    end
-
     describe 'part 1' do
-      # it 'should return 18 for the example' do
-      #   expect(@sample.part1).to eq(18)
-      # end
+      it 'should return 0 for the example' do
+        @sample = AOC2024<%= day_str %>.new(SAMPLE_DATA_<%= day %>)
+        expect(@sample.part1).to eq(0)
+      end
 
-      # it 'should return 2654 for the input' do
-      #   expect(@day.part1).to eq(2654)
+      # it 'should return 0 for the input', :api_dependant do
+      #   @day = AOC2024<%= day_str %>.new(@input)
+      #   expect(@day.part1).to eq(0)
       # end
     end
 
     describe 'part 2' do
-      # it 'should return 9 for the example' do
-      #   expect(@sample.part2).to eq(9)
+      # it 'should return 0 for the example' do
+      #   @sample = AOC2024<%= day_str %>.new(SAMPLE_DATA_<%= day %>)
+      #   expect(@sample.part2).to eq(0)
       # end
 
-      # it 'should return 1990 for the input' do
-      #   expect(@day.part2).to eq(1990)
+      # it 'should return 0 for the input', :api_dependant do
+      #   @day = AOC2024<%= day_str %>.new(@input)
+      #   expect(@day.part2).to eq(0)
       # end
     end
   end
@@ -73,7 +74,8 @@ ERB
 
 def generate_file(template, output_path, day)
   renderer = ERB.new(template)
-  File.write(output_path, renderer.result_with_hash(day: day))
+  day_str = "%02d" % day
+  File.write(output_path, renderer.result_with_hash(day: day, day_str: day_str))
   puts "Generated #{output_path}"
 end
 

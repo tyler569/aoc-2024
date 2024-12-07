@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'rspec'
+require './spec_helper'
 require './05'
 
 describe 'AOC 2024 day 5' do
@@ -40,7 +42,7 @@ describe 'AOC 2024 day 5' do
       expect(@sample.part1).to eq(143)
     end
 
-    it 'should return 6034 for the input' do
+    it 'should return 6034 for the input', :api_dependant do
       @day = AOC202405.new(AOCInputFetcher.get_input(2024, 5))
       expect(@day.part1).to eq(6034)
     end
@@ -52,7 +54,7 @@ describe 'AOC 2024 day 5' do
       expect(@sample.part2).to eq(123)
     end
 
-    it 'should return 6305 for the input' do
+    it 'should return 6305 for the input', :api_dependant do
       @day = AOC202405.new(AOCInputFetcher.get_input(2024, 5))
       expect(@day.part2).to eq(6305)
     end
