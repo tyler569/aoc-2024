@@ -50,7 +50,27 @@ class Grid
     end
   end
 
+  def each_with_index(&block)
+    @grid.each_with_index do |value, i|
+      c = i % @cols
+      r = i / @cols
+      block.call(value, c, r)
+    end
+  end
+
+  def count(item)
+    @grid.count(item)
+  end
+
   def to_s
     @grid.each_slice(@cols).map { |row| row.join('') }.join("\n")
+  end
+
+  def clone
+    Grid.new(@grid.clone, @cols, @rows)
+  end
+
+  def in_bounds?(c, r)
+    r >= 0 && r < @rows && c >= 0 && c < @cols
   end
 end
