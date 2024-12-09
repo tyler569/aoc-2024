@@ -53,7 +53,7 @@ SPEC_TEMPLATE = <<~ERB
       end
 
       # it 'should return 0 for the input', :api_dependant do
-      #   @day = AOC2024<%= day_str %>.new(@input)
+      #   @day = AOC2024<%= day_str %>.new(AOCInputFetcher.get_input(2024, <%= day %>)
       #   expect(@day.part1).to eq(0)
       # end
     end
@@ -65,7 +65,7 @@ SPEC_TEMPLATE = <<~ERB
       # end
 
       # it 'should return 0 for the input', :api_dependant do
-      #   @day = AOC2024<%= day_str %>.new(@input)
+      #   @day = AOC2024<%= day_str %>.new(AOCInputFetcher.get_input(2024, <%= day %>)
       #   expect(@day.part2).to eq(0)
       # end
     end
